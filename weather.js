@@ -44,6 +44,67 @@ function showWeather(pos) {
     var res = getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + pos.lat + "&lon=" + pos.lng +"&APPID=" + appid);
 
     console.log(res);
+    document.getElementById("temperatur").innerHTML = res.main.temp + " K";
+    document.getElementById("pressure").innerHTML = res.main.pressure + " hPa";
+    document.getElementById("humidity").innerHTML = res.main.humidity + "%";
+    document.getElementById("description").innerHTML = res.weather[0].description;
+
+    switch(res.weather[0].icon) {
+        case "01d":
+            document.getElementById("weather-icon").classList.add("wi-day-sunny");
+            break;
+        case "02d":
+            document.getElementById("weather-icon").classList.add("wi-day-cloudy");
+            break;
+        case "03d":
+            document.getElementById("weather-icon").classList.add("wi-cloud");
+            break;
+        case "04d":
+            document.getElementById("weather-icon").classList.add("wi-cloudy");
+            break;
+        case "09d":
+            document.getElementById("weather-icon").classList.add("wi-showers");
+            break;
+        case "10d":
+            document.getElementById("weather-icon").classList.add("wi-showers");
+            break;
+        case "11d":
+            document.getElementById("weather-icon").classList.add("wi-thunderstorm");
+            break;
+        case "13d":
+            document.getElementById("weather-icon").classList.add("wi-snow");
+            break;
+        case "50d":
+            document.getElementById("weather-icon").classList.add("wi-day-fog");
+            break;
+        case "01n":
+            document.getElementById("weather-icon").classList.add("wi-night-clear");
+            break;
+        case "02n":
+            document.getElementById("weather-icon").classList.add("wi-night-alt-cloudy");
+            break;
+        case "03n":
+            document.getElementById("weather-icon").classList.add("wi-cloud");
+            break;
+        case "04n":
+            document.getElementById("weather-icon").classList.add("wi-cloudy");
+            break;
+        case "09n":
+            document.getElementById("weather-icon").classList.add("wi-showers");
+            break;
+        case "10n":
+            document.getElementById("weather-icon").classList.add("wi-rain");
+            break;
+        case "11n":
+            document.getElementById("weather-icon").classList.add("wi-thunderstorm");
+            break;
+        case "13n":
+            document.getElementById("weather-icon").classList.add("wi-snow");
+            break;
+        case "50n":
+            document.getElementById("weather-icon").classList.add("wi-fog");
+            break;
+    }
 
 }
 
