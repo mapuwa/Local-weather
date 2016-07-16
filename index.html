@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Local weather</title>
-
+    <link rel="stylesheet" href="https://erikflowers.github.io/weather-icons/css/weather-icons.css">
+    <link rel="stylesheet" href="https://erikflowers.github.io/weather-icons/css/weather-icons-wind.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<pre id="demo"></pre>
-<pre id="demo2"></pre>
+<div class="loader"></div>
+<div class="weather">
+    <h2 id="location"></h2>
+    <h3 id="temperatur"></h3>
+    <h3 id="humidity"></h3>
+    <h3 id="description"></h3>
+</div>
 
 <script src="weather.js"></script>
 </body>
