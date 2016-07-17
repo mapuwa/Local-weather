@@ -19,21 +19,21 @@ function getJSON(url, cl, err){
 }
 
 /**
- * Convert temperature in Kelvin to Celsius and round on 2 digits
+ * Convert temperature in Kelvin to Celsius and round on 1 digits
  * @param k temperature in Kelvin
  * @returns {number} temperature in Celsius
  */
 function kelvinToCelsius(k) {
-    return (k - 273.15).toFixed(2);
+    return (k - 273.15).toFixed(1);
 }
 
 /**
- * Convert temperature in Kelvin to Fahrenheit and round on 2 digits
+ * Convert temperature in Kelvin to Fahrenheit and round on 1 digits
  * @param k temperature in Kelvin
  * @returns {number} temperature in Fahrenheit
  */
 function kelvinToFahr(k) {
-    return (k * 1.8 - 459.67).toFixed(2);
+    return (k * 1.8 - 459.67).toFixed(1);
 }
 
 /**
@@ -45,7 +45,7 @@ function kelvinToFahr(k) {
 function findLocation(cl, err) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude;
             var fc = function (res) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -70,7 +70,7 @@ function findLocation(cl, err) {
  * @param err function, which is called in case of error
  */
 function  findByIP(cl, err) {
-    getJSON("http://ip-api.com/json", function (response) {
+    getJSON("https://crossorigin.me/http://ip-api.com/json", function (response) {
         var pos = {
             lat: response.lat,
             lng: response.lon,
@@ -98,7 +98,7 @@ function switchTemperatures() {
  */
 function showWeather(pos, err) {
     var appid = "bd7405d0ac546bd7c95056e861356b2b";
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.lat + "&lon=" + pos.lng +"&APPID=" + appid;
+    var url = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=" + pos.lat + "&lon=" + pos.lng +"&APPID=" + appid;
     getJSON(url, function (res) {
         var icons = {
             "01d": "wi-day-sunny", "01n": "wi-night-clear",
@@ -111,7 +111,7 @@ function showWeather(pos, err) {
             "13d": "wi-snow", "13n": "wi-snow",
             "50d": "wi-fog", "50n": "wi-fog"
         };
-        document.body.style.backgroundImage = "url(images/"+res.weather[0].icon +".jpg)";
+        document.body.style.backgroundImage = "url(https://mapuwa.github.io/Local-weather/images/"+res.weather[0].icon +".jpg)";
         /* Set text */
         document.getElementById("location").innerHTML = pos.address;
         document.getElementById("pressure").innerHTML = res.main.pressure + " hPa";
