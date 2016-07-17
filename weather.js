@@ -45,7 +45,7 @@ function kelvinToFahr(k) {
 function findLocation(cl, err) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude;
             var fc = function (res) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -70,7 +70,7 @@ function findLocation(cl, err) {
  * @param err function, which is called in case of error
  */
 function  findByIP(cl, err) {
-    getJSON("http://ip-api.com/json", function (response) {
+    getJSON("https://crossorigin.me/http://ip-api.com/json", function (response) {
         var pos = {
             lat: response.lat,
             lng: response.lon,
@@ -98,7 +98,7 @@ function switchTemperatures() {
  */
 function showWeather(pos, err) {
     var appid = "bd7405d0ac546bd7c95056e861356b2b";
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.lat + "&lon=" + pos.lng +"&APPID=" + appid;
+    var url = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=" + pos.lat + "&lon=" + pos.lng +"&APPID=" + appid;
     getJSON(url, function (res) {
         var icons = {
             "01d": "wi-day-sunny", "01n": "wi-night-clear",
