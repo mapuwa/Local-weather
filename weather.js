@@ -111,21 +111,25 @@ function showWeather(pos, err) {
             "13d": "wi-snow", "13n": "wi-snow",
             "50d": "wi-fog", "50n": "wi-fog"
         };
-
         document.body.style.backgroundImage = "url(images/"+res.weather[0].icon +".jpg)";
+        /* Set text */
         document.getElementById("location").innerHTML = pos.address;
-        document.getElementById("temperature").innerHTML = kelvinToCelsius(res.main.temp) + "°C";
-        kelvin = res.main.temp; // For conversion Celsius/Fahrenheit
-        isCelsius = true; // For conversion Celsius/Fahrenheit
-        document.getElementById("switch-temp").addEventListener("click", switchTemperatures);
         document.getElementById("pressure").innerHTML = res.main.pressure + " hPa";
         document.getElementById("humidity").innerHTML = res.main.humidity + "%";
         document.getElementById("description").innerHTML = res.weather[0].description;
         document.getElementById("wind-speed").innerHTML = res.wind.speed + "m/s";
+        /* Temperature and conversion Celsius/Fahrenheit */
+        document.getElementById("temperature").innerHTML = kelvinToCelsius(res.main.temp) + "°C";
+        kelvin = res.main.temp;
+        isCelsius = true;
+        document.getElementById("switch-temp").addEventListener("click", switchTemperatures);
+        /* Add classes to the icons */
         document.getElementById("wind-icon").classList.add("towards-"+Math.round(res.wind.deg)+"-deg");
         document.getElementById("weather-icon").classList.add(icons[res.weather[0].icon]);
-        document.getElementById("weather").style.display = "inline-block"; // show weather div
-        document.getElementById("loader").style.display = "none"; // hide loader
+        /* Show weather box and hide loader */
+        document.getElementById("weather").style.display = "inline-block";
+        document.getElementById("loader").style.display = "none";
     }, err);
 }
+
 findLocation(showWeather, error);
