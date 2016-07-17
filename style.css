@@ -1,13 +1,125 @@
-.loader {
-    height: 28px;
-    width: 28px;
-    animation: rotate 0.8s infinite linear;
-    border: 8px solid red;
+* { box-sizing: border-box }
+body {
+    margin: 0;
+    padding:0;
+    width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*Loader */
+.message-box {
+    margin: 0;
+    padding: 5vw;
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+.message-box h1 {
+    margin: 5vw 0 0 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+}
+.spinning-circle {
+    margin: 0 auto;
+    height: 10vw;
+    width: 10vw;
+    animation: rotate 1s infinite linear;
+    border: 1vw solid #4d4d66;
     border-right-color: transparent;
     border-radius: 50%;
 }
-
 @keyframes rotate {
     0%    { transform: rotate(0deg); }
     100%  { transform: rotate(360deg); }
+}
+
+/* Error */
+.error {
+    display: none;
+}
+.close-sign {
+    position: relative;
+    margin: 0 auto 5em auto;
+    height: 10vw;
+    width: 10vw;
+}
+.close-sign:before, .close-sign:after {
+    display: block;
+    position: absolute;
+    left: 5vw;
+    content: ' ';
+    height: 15vw;
+    width: 1vw;
+    background-color: black;
+}
+.close-sign:before {
+    transform: rotate(45deg);
+}
+.close-sign:after {
+    transform: rotate(-45deg);
+}
+
+/* Weather box */
+.weather {
+    display: none;
+    max-width: 100vw;
+    background: rgba(152, 152, 152, 0.8);
+    padding: 5vw;
+    margin: 5vw;
+    color: whitesmoke;
+}
+.weather h1 {
+    margin-top: 0em;
+}
+.wi {
+    font-size: 5em;
+    display: inline-block;
+    padding: 0 0.3em 0 0;
+    position: relative;
+    top: 0.05em;
+}
+.wi-wind {
+    font-size: 1.5em;
+    padding: 0 0 0 0.3em;
+}
+sup {
+    font-size: 1.2em;
+    position: relative;
+    top: -1.1em;
+    left: 0.2em;
+    cursor: pointer;
+    color: #171717;
+}
+.row {
+    display: flex;
+}
+.column1 {
+    flex: 5;
+}
+.column1 h2 {
+    font-size: 2em;
+    margin-top: 0.3em;
+}
+.column1 h3 span{
+    font-size: 3em;
+}
+.column2 {
+    flex: 3;
+}
+.column2 span {
+    font-weight: 400;
+}
+@media only screen and (max-width: 800px)  {
+    .row {
+        text-align: center;
+        flex-direction: column;
+    }
 }

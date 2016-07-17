@@ -2,21 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local weather</title>
     <link rel="stylesheet" href="https://erikflowers.github.io/weather-icons/css/weather-icons.css">
     <link rel="stylesheet" href="https://erikflowers.github.io/weather-icons/css/weather-icons-wind.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="loader"></div>
-<div class="weather">
-    <h2 id="location"></h2>
-    <h3 id="pressure"></h3>
-    <h3 id="temperatur"></h3>
-    <h3 id="humidity"></h3>
-    <h3 id="description"></h3>
-    <i class="wi" id="weather-icon"></i>
-</div>
+
+    <div class="message-box" id="loader">
+        <div class="spinning-circle"></div>
+        <h1>Loading</h1>
+    </div>
+
+    <div class="message-box error" id="error">
+        <div class="close-sign"></div>
+        <h1>An error occurred. Please try again later.</h1>
+    </div>
+
+    <div class="weather" id="weather">
+        <h1 id="location"></h1>
+        <div class="row">
+            <div class="column1">
+                <h2 id="description"></h2>
+                <h3><i class="wi" id="weather-icon"></i><span id="temperature"></span><sup id="switch-temp">°F</sup></h3>
+
+            </div>
+            <div class="column2">
+                <h3>Pressure: <span id="pressure"></span></h3>
+                <h3>Humidity: <span id="humidity"></span></h3>
+                <h3>Wind: <span id="wind-speed"></span>  <i class="wi wi-wind" id="wind-icon"></i></h3>
+            </div>
+        </div>
+    </div>
 
 <script src="weather.js"></script>
 </body>
