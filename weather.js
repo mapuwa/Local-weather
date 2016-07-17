@@ -19,21 +19,21 @@ function getJSON(url, cl, err){
 }
 
 /**
- * Convert temperature in Kelvin to Celsius and round on 2 digits
+ * Convert temperature in Kelvin to Celsius and round on 1 digits
  * @param k temperature in Kelvin
  * @returns {number} temperature in Celsius
  */
 function kelvinToCelsius(k) {
-    return (k - 273.15).toFixed(2);
+    return (k - 273.15).toFixed(1);
 }
 
 /**
- * Convert temperature in Kelvin to Fahrenheit and round on 2 digits
+ * Convert temperature in Kelvin to Fahrenheit and round on 1 digits
  * @param k temperature in Kelvin
  * @returns {number} temperature in Fahrenheit
  */
 function kelvinToFahr(k) {
-    return (k * 1.8 - 459.67).toFixed(2);
+    return (k * 1.8 - 459.67).toFixed(1);
 }
 
 /**
@@ -111,7 +111,7 @@ function showWeather(pos, err) {
             "13d": "wi-snow", "13n": "wi-snow",
             "50d": "wi-fog", "50n": "wi-fog"
         };
-        document.body.style.backgroundImage = "url(images/"+res.weather[0].icon +".jpg)";
+        document.body.style.backgroundImage = "url(https://mapuwa.github.io/Local-weather/images/"+res.weather[0].icon +".jpg)";
         /* Set text */
         document.getElementById("location").innerHTML = pos.address;
         document.getElementById("pressure").innerHTML = res.main.pressure + " hPa";
