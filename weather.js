@@ -70,14 +70,17 @@ function findLocation(cl, err) {
  * @param err function, which is called in case of error
  */
 function  findByIP(cl, err) {
-    getJSON("https://crossorigin.me/http://ip-api.com/json", function (response) {
-        var pos = {
-            lat: response.lat,
-            lng: response.lon,
-            address: response.city + ", " + response.country
-        };
-        cl(pos, err);
+    getJSON("https://api.ipify.org?format=json", function (res) { // Get IP because crossorigin.me
+        getJSON("https://crossorigin.me/http://ip-api.com/json/" + res.ip, function (response) {
+            var pos = {
+                lat: response.lat,
+                lng: response.lon,
+                address: response.city + ", " + response.country
+            };
+            cl(pos, err);
+        }, err);
     }, err);
+
 }
 
 function error(err) {
